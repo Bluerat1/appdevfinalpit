@@ -30,7 +30,7 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["192.168.18.121", "127.0.0.1", "localhost"]
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8000",
@@ -51,9 +51,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'djoser',
-    'rest_framework_simple_jwt'
+    'rest_framework_simplejwt',
 
     'users',
+    'current_monitor',
+
 ]
 
 MIDDLEWARE = [
@@ -141,6 +143,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
 
+ESP32_AUTH_TOKEN = env("ESP32_AUTH_TOKEN")
+
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -177,3 +182,13 @@ DJOSER = {
         'user_delete': "djoser.serializers.UserDeleteSerializer",      
     },
 }
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_USE_TLS = True
+EMAIL_PORT = env("EMAIL_PORT")
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL = "info@powmon.com"
+DOMAIN = env("DOMAIN")
+SITE_NAME = "Power Monitor"
