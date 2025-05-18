@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import environ
 from datetime import timedelta
+import dj_database_url
 
 env = environ.Env(DEBUG=(bool, False))
 
@@ -99,6 +100,7 @@ DATABASES = {
     }
 }
 
+DATABASES["default"] = dj_database_url.parse("postgresql://powmondb_user:0eeeD0ZMYA3l8PSL3fq2ANAVF3XKsc2g@dpg-d0kqv1je5dus73c14lqg-a.oregon-postgres.render.com/powmondb")
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
