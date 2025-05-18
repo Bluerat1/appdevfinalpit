@@ -39,6 +39,13 @@ CORS_ALLOWED_ORIGINS = [
     "https://bluerat1.github.io",
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://appdevfinalpit.onrender.com"
+]
+
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 # Application definition
 
