@@ -194,12 +194,22 @@ DJOSER = {
     },
 }
 
+#EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+#EMAIL_HOST = env("EMAIL_HOST")
+#EMAIL_USE_TLS = True
+#EMAIL_PORT = env("EMAIL_PORT")
+#EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+#EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+#DEFAULT_FROM_EMAIL = "info@powmon.com"
+#DOMAIN = env("DOMAIN")
+#SITE_NAME = "Power Monitor"
+
+
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_HOST = env("GMAIL_HOST")
 EMAIL_USE_TLS = True
-EMAIL_PORT = env("EMAIL_PORT")
-EMAIL_HOST_USER = env("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
-DEFAULT_FROM_EMAIL = "info@powmon.com"
-DOMAIN = env("DOMAIN")
-SITE_NAME = "Power Monitor"
+EMAIL_PORT = env("GMAIL_PORT")
+EMAIL_HOST_USER = env("GMAIL_USER")
+EMAIL_HOST_PASSWORD = env("GMAIL_PASS")
+
+
