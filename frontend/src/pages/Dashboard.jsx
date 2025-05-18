@@ -10,7 +10,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("http://127.0.0.1:8000/api/current/all/");
+      const res = await fetch("https://appdevfinalpit.onrender.com/api/current/all/");
       const json = await res.json();
       setData(json.reverse()); // oldest to newest
     };
