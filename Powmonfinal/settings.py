@@ -203,10 +203,13 @@ DJOSER = {
 #DOMAIN = env("DOMAIN")
 #SITE_NAME = "Power Monitor"
 
-
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = env("GMAIL_HOST")
 EMAIL_USE_TLS = True
 EMAIL_PORT = env("GMAIL_PORT")
 EMAIL_HOST_USER = env("GMAIL_USER")
 EMAIL_HOST_PASSWORD = env("GMAIL_PASS")
+DEFAULT_FROM_EMAIL = env("GMAIL_USER")
+DOMAIN = env("DOMAIN")
+SITE_NAME = "Power Monitor"
+
