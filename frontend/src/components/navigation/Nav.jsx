@@ -20,7 +20,7 @@ const Nav = () => {
 
     return (
         <nav className="navbar">
-            <NavLink className="logo" to="/">Logo</NavLink>
+            <NavLink className="logo" to="/"> <img src="cat.jpg" alt="Logo" style={{ height: "40px" }} /></NavLink>
             <ul className="nav-links">
                 {user ?
                     <>
