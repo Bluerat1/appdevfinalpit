@@ -31,7 +31,7 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = ["192.168.18.121", "127.0.0.1", "localhost", "https://appdevfinalpit.onrender.com"]
+ALLOWED_HOSTS = ["192.168.18.121", "127.0.0.1", "localhost", "appdevfinalpit.onrender.com"]
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8000",
