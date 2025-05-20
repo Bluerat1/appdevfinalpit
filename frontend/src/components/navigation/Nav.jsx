@@ -94,14 +94,12 @@ const Nav = () => {
                         ) : (
                             <>
                                 <li className="nav-item">
-                                    <NavLink 
-                                        className={({isActive}) => isActive ? 'nav-link active' : 'nav-link'} 
-                                        to="/login"
-                                    >
+                                    <NavLink className={({isActive}) => isActive ? 'nav-link active' : 'nav-link'} to="/login">
                                         Login
                                     </NavLink>
+                                    
                                 </li>
-
+                                    <NavLink className={({isActive}) => isActive ? 'nav-link active' : 'nav-link'} to="/register">Register</NavLink>
                             </>
                         )}
                     </ul>
