@@ -3,15 +3,22 @@ import authService from "./authService";
 
 const user = JSON.parse(localStorage.getItem("user"))
 
+const userInfoFromStorage = localStorage.getItem("userInfo")
+  ? JSON.parse(localStorage.getItem("userInfo"))
+  : null;
+
+
 
 const initialState = {
     user: user ? user : null,
-    userInfo: {},
+    userInfo: userInfoFromStorage,
     isError: false,
     isSuccess: false,
     isLoading: false,
     message: "",
+
 }
+
 
 export const register = createAsyncThunk(
     "auth/register",
@@ -29,26 +36,35 @@ export const register = createAsyncThunk(
 )
 
 export const login = createAsyncThunk(
-    "auth/login",
-    async (userData, thunkAPI) => {
-        try {
-            return await authService.login(userData)
-        } catch (error) {
-            const message = (error.response && error.response.data
-                && error.response.data.message) ||
-                error.message || error.toString()
+  "auth/login",
+  async (userData, thunkAPI) => {
+    try {
+      const data = await authService.login(userData);
+      localStorage.setItem("user", JSON.stringify(data));
+      
+      // Optionally fetch userInfo immediately after login
+      const userInfo = await authService.getUserInfo(data.access);
+      localStorage.setItem("userInfo", JSON.stringify(userInfo));
 
-            return thunkAPI.rejectWithValue(message)
-        }
+      return { ...data, userInfo };  // Pass both
+    } catch (error) {
+      const message = error?.response?.data?.message || error.message || error.toString();
+      return thunkAPI.rejectWithValue(message);
     }
-)
+  }
+);
 
 export const logout = createAsyncThunk(
-    "auth/logout",
-    async () => {
-        authService.logout()
+    "auth/logout", 
+    async (_, thunkAPI) => {
+        await authService.logout();
+        localStorage.removeItem("user");
+        localStorage.removeItem("userInfo");
     }
-)
+);
+
+
+
 
 export const activate = createAsyncThunk(
     "auth/activate",
@@ -144,10 +160,12 @@ export const authSlice = createSlice({
                 state.isLoading = true
             })
             .addCase(login.fulfilled, (state, action) => {
-                state.isLoading = false
-                state.isSuccess = true
-                state.user = action.payload
+                state.isLoading = false;
+                state.isSuccess = true;
+                state.user = action.payload;
+                state.userInfo = action.payload.userInfo;
             })
+
             .addCase(login.rejected, (state, action) => {
                 state.isLoading = false
                 state.isSuccess = false
