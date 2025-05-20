@@ -39,8 +39,12 @@ const RegisterPage = () => {
             return;
         }
         
-        if (password.length < 6) {
-            toast.error('Password must be at least 6 characters');
+        if (password.length < 8) {
+            toast.error('Password must be at least 8 characters');
+            return;
+        }
+        if (!/\d/.test(password)) { // \d matches any digit (0-9)
+            toast.error('Password must include at least one number');
             return;
         }
 
