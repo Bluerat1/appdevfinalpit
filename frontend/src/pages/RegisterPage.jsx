@@ -32,21 +32,30 @@ const RegisterPage = () => {
     }
 
     const handleSubmit = (e) => {
+        
         e.preventDefault()
-
+        if (!first_name || !last_name || !email || !password || !re_password) {
+            toast.error('Please fill in all fields');
+            return;
+        }
+        
+        if (password.length < 6) {
+            toast.error('Password must be at least 6 characters');
+            return;
+        }
 
         if (password !== re_password) {
             toast.error("Passwords do not match")
-        } else {
-            const userData = {
-                first_name,
-                last_name,
-                email,
-                password,
-                re_password
-            }
-            dispatch(register(userData))
         }
+        const userData = {
+            first_name,
+            last_name,
+            email,
+            password,
+            re_password
+        }
+        dispatch(register(userData))
+        
     }
 
 
@@ -55,9 +64,9 @@ const RegisterPage = () => {
             toast.error(message)
         }
 
-        if (isSuccess || user) {
-            navigate("/")
-            toast.success("An activation email has been sent to your email. Please check your email")
+        if (isSuccess && !user) {
+            toast.success("Activation email sent");
+            navigate("/login");
         }
 
         dispatch(reset())
@@ -69,40 +78,40 @@ const RegisterPage = () => {
     return (
         <>
             <div className="container auth__container">
-                <h1 className="main__title">Register <BiUser /> </h1>
+                <h1 className="main__title animate-fade-slide">Register <BiUser /> </h1>
 
                 {isLoading && <Spinner />}
 
-                <form className="auth__form">
-                    <input type="text"
+                <form className="auth__form animate-fade-slide" onSubmit={handleSubmit}>
+                    <input className="animate-fade-slide" style={{ animationDelay: "0.1s" }} type="text"
                         placeholder="First Name"
                         name="first_name"
                         onChange={handleChange}
                         value={first_name}
                         required
                     />
-                    <input type="text"
+                    <input className="animate-fade-slide" style={{ animationDelay: "0.2s" }} type="text"
                         placeholder="Last Name"
                         name="last_name"
                         onChange={handleChange}
                         value={last_name}
                         required
                     />
-                    <input type="email"
+                    <input className="animate-fade-slide" style={{ animationDelay: "0.3s" }} type="email"
                         placeholder="Email"
                         name="email"
                         onChange={handleChange}
                         value={email}
                         required
                     />
-                    <input type="password"
+                    <input className="animate-fade-slide" style={{ animationDelay: "0.4s" }} type="password"
                         placeholder="Password"
                         name="password"
                         onChange={handleChange}
                         value={password}
                         required
                     />
-                    <input type="password"
+                    <input className="animate-fade-slide" style={{ animationDelay: "0.5s" }} type="password"
                         placeholder="Retype Password"
                         name="re_password"
                         onChange={handleChange}
@@ -110,7 +119,7 @@ const RegisterPage = () => {
                         required
                     />
 
-                    <button className="btn btn-primary" type="submit" onClick={handleSubmit}>Register</button>
+                    <button className="btn btn-primary animate-fade-slide" style={{ animationDelay: "0.6s" }} type="submit" >Register</button>
                 </form>
             </div>
         </>

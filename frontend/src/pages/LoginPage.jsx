@@ -58,28 +58,28 @@ const LoginPage = () => {
     return (
         <>
             <div className="container auth__container">
-                <h1 className="main__title">Login <BiLogInCircle /></h1>
+                <h1 className="main__title animate-fade-slide">Login <BiLogInCircle /></h1>
 
                 {isLoading && <Spinner />}
 
-                <form className="auth__form">
-                    <input type="text"
+                <form className="auth__form animate-fade-slide">
+                    <input className="animate-fade-slide" style={{ animationDelay: "0.1s" }} type="text"
                         placeholder="email"
                         name="email"
                         onChange={handleChange}
                         value={email}
                         required
                     />
-                    <input type="password"
+                    <input className="animate-fade-slide" style={{ animationDelay: "0.2s" }} type="password"
                         placeholder="password"
                         name="password"
                         onChange={handleChange}
                         value={password}
                         required
                     />
-                    <Link to="/reset-password">Forget Password ?</Link>
+                    <Link className="animate-fade-slide" to="/reset-password" style={{ animationDelay: "0.3s" }}>Forget Password ?</Link>
 
-                    <button className="btn btn-primary" type="submit" onClick={handleSubmit}>Login</button>
+                    <button className="btn btn-primary animate-fade-slide" type="submit" style={{ animationDelay: "0.4s" }} onClick={handleSubmit}>Login</button>
                 </form>
             </div>
         </>
