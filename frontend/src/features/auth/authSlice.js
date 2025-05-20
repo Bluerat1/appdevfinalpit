@@ -42,7 +42,6 @@ export const login = createAsyncThunk(
       const data = await authService.login(userData);
       localStorage.setItem("user", JSON.stringify(data));
       
-      // Optionally fetch userInfo immediately after login
       const userInfo = await authService.getUserInfo(data.access);
       localStorage.setItem("userInfo", JSON.stringify(userInfo));
 

@@ -15,7 +15,6 @@ import ProtectedRoute from "./components/routing/ProtectedRoute";
 function App() {
   return (
     <>
-
         <Nav />
         <Routes>
           <Route path="/" element={<HomePage />} />

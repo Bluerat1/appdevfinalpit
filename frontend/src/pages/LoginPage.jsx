@@ -30,7 +30,6 @@ const LoginPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
         const userData = {
             email,
             password,
@@ -41,8 +40,9 @@ const LoginPage = () => {
 
     useEffect(() => {
         if (isError) {
-            toast.error(message)
+            toast.error("Account isn't activated yet or does not exist")
         }
+        
 
         if (isSuccess || user) {
             navigate("/dashboard")
@@ -77,7 +77,8 @@ const LoginPage = () => {
                         value={password}
                         required
                     />
-                    <Link className="animate-fade-slide" to="/reset-password" style={{ animationDelay: "0.3s" }}>Forget Password ?</Link>
+                    <Link className="animate-fade-slide" to="/register" style={{ animationDelay: "0.3s" }}>Don't have an account?</Link>
+                    <Link className="animate-fade-slide" to="/reset-password" style={{ animationDelay: "0.4s" }}>Forget Password ?</Link>
 
                     <button className="btn btn-primary animate-fade-slide" type="submit" style={{ animationDelay: "0.4s" }} onClick={handleSubmit}>Login</button>
                 </form>

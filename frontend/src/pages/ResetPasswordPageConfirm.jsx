@@ -59,12 +59,12 @@ const ResetPasswordPageConfirm = () => {
 
     return (
         <>
-            <div className="container auth__container">
-                <h1 className="main__title">Reset Password here <AiFillLock /></h1>
+            <div className="container auth__container animate-fade-slide" >
+                <h1 className="main__title animate-fade-slide">Reset Password here <AiFillLock /></h1>
 
                 {isLoading && <Spinner />}
 
-                <form className="auth__form">
+                <form className="auth__form animate-fade-slide" style={{ animationDelay: "0.1s" }}>
                     <input type="password"
                         placeholder="New password"
                         name="new_password"
@@ -72,14 +72,14 @@ const ResetPasswordPageConfirm = () => {
                         value={new_password}
                         required
                     />
-                    <input type="password"
+                    <input type="password animate-fade-slide" style={{ animationDelay: "0.2s" }}
                         placeholder="Confirm new password"
                         name="re_new_password"
                         onChange={handleChange}
                         value={re_new_password}
                         required
                     />
-                    <button className="btn btn-primary" type="submit" onClick={handleSubmit}>Reset Password</button>
+                    <button className="btn btn-primary animate-fade-slide" style={{ animationDelay: "0.3s" }} type="submit" onClick={handleSubmit}>Reset Password</button>
                 </form>
             </div>
         </>

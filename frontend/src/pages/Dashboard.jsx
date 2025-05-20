@@ -54,7 +54,7 @@ const Dashboard = () => {
     };
 
     fetchData();
-    const interval = setInterval(fetchData, 10000); // every 10s
+    const interval = setInterval(fetchData, 1000); // every 10s
     return () => clearInterval(interval);
   }, []);
 

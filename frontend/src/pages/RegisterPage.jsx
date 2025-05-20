@@ -81,7 +81,7 @@ const RegisterPage = () => {
                 <h1 className="main__title animate-fade-slide">Register <BiUser /> </h1>
 
                 {isLoading && <Spinner />}
-
+                
                 <form className="auth__form animate-fade-slide" onSubmit={handleSubmit}>
                     <input className="animate-fade-slide" style={{ animationDelay: "0.1s" }} type="text"
                         placeholder="First Name"
@@ -118,12 +118,16 @@ const RegisterPage = () => {
                         value={re_password}
                         required
                     />
-
+                    
                     <button className="btn btn-primary animate-fade-slide" style={{ animationDelay: "0.6s" }} type="submit" >Register</button>
+                    
                 </form>
+                
             </div>
         </>
     )
+    
 }
+
 
 export default RegisterPage

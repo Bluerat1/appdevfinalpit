@@ -55,12 +55,12 @@ const LoginPage = () => {
 
     return (
         <>
-            <div className="container auth__container">
+            <div className="container auth__container animate-fade-slide">
                 <h1 className="main__title">Reset Password <BiLogInCircle /></h1>
 
                 {isLoading && <Spinner />}
 
-                <form className="auth__form">
+                <form className="auth__form animate-fade-slide" style={{ animationDelay: "0.1s" }}>
                     <input type="text"
                         placeholder="email"
                         name="email"
@@ -69,7 +69,7 @@ const LoginPage = () => {
                         required
                     />
 
-                    <button className="btn btn-primary" type="submit" onClick={handleSubmit}>Reset Password</button>
+                    <button className="btn btn-primary animate-fade-slide" type="submit" onClick={handleSubmit}style={{ animationDelay: "0.2s" }}>Reset Password</button>
                 </form>
             </div>
         </>

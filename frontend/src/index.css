@@ -209,6 +209,7 @@ img {
 .main__title {
   font-size: 3rem;
   font-weight: 700;
+  text-align: center;
   background: linear-gradient(45deg, var(--color-primary), var(--color-accent));
   -webkit-background-clip: text;
   background-clip: text;
